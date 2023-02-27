@@ -30,6 +30,7 @@
 		E6791D547F8DC7DE96CF8B62 /* Pods_SOLIDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38B806245F5448EEB45B1A7 /* Pods_SOLIDTests.framework */; };
 		EA22C6BD29A64BF800A58634 /* LoginStatusDefaultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22C6BC29A64BF800A58634 /* LoginStatusDefaultTest.swift */; };
 		EA22C6BF29A64DAC00A58634 /* LoginEventsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22C6BE29A64DAC00A58634 /* LoginEventsTest.swift */; };
+		F2D4D73629ACEA90008688A1 /* LoginRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D4D73529ACEA90008688A1 /* LoginRouterTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		DB098D088AFF0B81B16376DD /* Pods-SOLID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOLID.debug.xcconfig"; path = "Target Support Files/Pods-SOLID/Pods-SOLID.debug.xcconfig"; sourceTree = "<group>"; };
 		EA22C6BC29A64BF800A58634 /* LoginStatusDefaultTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatusDefaultTest.swift; sourceTree = "<group>"; };
 		EA22C6BE29A64DAC00A58634 /* LoginEventsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEventsTest.swift; sourceTree = "<group>"; };
+		F2D4D73529ACEA90008688A1 /* LoginRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterTest.swift; sourceTree = "<group>"; };
 		F38B806245F5448EEB45B1A7 /* Pods_SOLIDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOLIDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9DA9712D727A71581C474EC /* Pods_SOLID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOLID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 				98BCC083292E79980080ED80 /* SOLIDTests.swift */,
 				EA22C6BC29A64BF800A58634 /* LoginStatusDefaultTest.swift */,
 				EA22C6BE29A64DAC00A58634 /* LoginEventsTest.swift */,
+				F2D4D73529ACEA90008688A1 /* LoginRouterTest.swift */,
 			);
 			path = SOLIDTests;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 			files = (
 				98BCC084292E79980080ED80 /* SOLIDTests.swift in Sources */,
 				EA22C6BF29A64DAC00A58634 /* LoginEventsTest.swift in Sources */,
+				F2D4D73629ACEA90008688A1 /* LoginRouterTest.swift in Sources */,
 				EA22C6BD29A64BF800A58634 /* LoginStatusDefaultTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,7 +760,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G38NNHTK29;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uala.labs.SOLIDTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -777,7 +781,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G38NNHTK29;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uala.labs.SOLIDTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

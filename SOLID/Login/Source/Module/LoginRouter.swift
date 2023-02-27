@@ -11,7 +11,6 @@ final class LoginRouter: LoginDemoRouterType {
     var view: LoginDemoViewType?
 
     func goNextScreen() {
-
         view?.navigationController?.pushViewController(HomeViewController(), animated: true)
     }
 }
