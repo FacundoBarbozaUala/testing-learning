@@ -10,26 +10,27 @@ import UalaAuth
 @testable import SOLID
 
 final class LoginRouterTest: XCTestCase {
-
-    @MainActor func makeSut() -> LoginRouter {
+    
+    func makeSut() async -> (LoginRouter, UINavigationController) {
         let sut = LoginRouter()
-        let mockLoginDemoViewType = MockLoginDemoViewType()
-        let navigation = UINavigationController(rootViewController: mockLoginDemoViewType)
+        let mockLoginDemoViewType = await MockLoginDemoViewType()
         sut.view = mockLoginDemoViewType
-        mockLoginDemoViewType.beginAppearanceTransition(true, animated: false)
-        return sut
+        let navigation = await UINavigationController(rootViewController: sut.view!)
+        return (sut, navigation)
     }
     
-    func test_go_next_screen() async {
-        let sut = await makeSut()
-        
+    func test_go_next_screen() async throws {
+        let (sut, navigation) = await makeSut()
+        let viewControllerSpected = await HomeViewController()
+      
         await sut.goNextScreen()
         
-        let topViewController = await sut.view?.navigationController?.topViewController
-        let viewControllers = await sut.view?.navigationController?.viewControllers
+        let topViewController = await navigation.topViewController
+        let viewControllers = await navigation.viewControllers
         
         XCTAssertNotNil(topViewController)
-        XCTAssertEqual(viewControllers?.count, 1)
+        XCTAssertEqual(topViewController, viewControllerSpected)
+        XCTAssertEqual(viewControllers.count, 2)
     }
 }
 
