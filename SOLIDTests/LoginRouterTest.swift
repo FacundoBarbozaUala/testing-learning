@@ -21,15 +21,15 @@ final class LoginRouterTest: XCTestCase {
     
     func test_go_next_screen() async throws {
         let (sut, navigation) = await makeSut()
-        let viewControllerSpected = await HomeViewController()
-      
+        
         await sut.goNextScreen()
         
         let topViewController = await navigation.topViewController
         let viewControllers = await navigation.viewControllers
         
         XCTAssertNotNil(topViewController)
-        XCTAssertEqual(topViewController, viewControllerSpected)
+        XCTAssertTrue(topViewController is HomeViewController)
+        XCTAssertNotNil(topViewController as? HomeViewController)
         XCTAssertEqual(viewControllers.count, 2)
     }
 }
