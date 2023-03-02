@@ -13,9 +13,9 @@ import UalaUI
 
 final class HomeInteractorTest: XCTestCase {
     func makeSut() -> (sut: HomeInteractor, spy: MockProfileRepository) {
-        let sut = HomeInteractor()
         let mockProfile = MockProfileRepository()
         let enviroment = EnvironmentBuilder.create(.stage, .Argentina)
+        let sut = HomeInteractor(profileRepo: mockProfile)
         CoreStarter.start(environment: enviroment)
         UIStarter.start(from: .init())
         ServiceLocator.sharedLocator.register({MockAPIManager() as BaseApiManager})
@@ -24,30 +24,41 @@ final class HomeInteractorTest: XCTestCase {
     
     func test_get_balance_success() {
         let (sut,spy) = makeSut()
-        let balanceSpected = Balance(accountId: "", availableBalance: 1)
+        var balanceSpected = Balance(accountId: "", availableBalance: 1)
+        spy.balanceStub = balanceSpected
+        let expectation = XCTestExpectation(description: "Promise resolved")
         
         sut.getBalance { [weak self] result in
             switch result {
             case .success(let balance):
                 XCTAssertEqual(balance, balanceSpected)
+                expectation.fulfill()
             case .failure(let error):
                 XCTFail()
+                expectation.fulfill()
             }
         }
+        
+        wait(for: [expectation], timeout: 5)
     }
     
     func test_get_balance_failure() {
         let (sut,spy) = makeSut()
-        let errorSpected = UalaError(rawValue: "Falló")
+        spy.balanceStubError = UalaError.undefined
+        let expectation = XCTestExpectation(description: "Promise resolved")
         
         sut.getBalance { [weak self] result in
             switch result {
             case .success(let balance):
                 XCTFail()
+                expectation.fulfill()
             case .failure(let error):
-                XCTAssertEqual(errorSpected?.localizedDescription, error.localizedDescription)
+                XCTAssertEqual(error.localizedDescription, spy.balanceStubError.localizedDescription)
+                expectation.fulfill()
             }
         }
+        
+        wait(for: [expectation], timeout: 5)
     }
 }
 extension Balance: Equatable {
@@ -57,20 +68,25 @@ extension Balance: Equatable {
 }
 
 class MockProfileRepository: ProfileRepository {
-    
+        
     var detailsIsInvoked: Bool = false
-    public func details() {
-        detailsIsInvoked = true
+    let detailsStub: User! = nil
+    let detailsStubError: Error! = nil
+    override func details() -> Promise<User> {
+        if let detailsStubError = detailsStubError {
+            return .init(error: detailsStubError)
+        }
+        return .value(detailsStub)
     }
     
     var balanceIsInvoked: Bool = false
-    let balanceStub: Balance!
-    let balanceStubError: Error!
+    var balanceStub: Balance! = nil
+    var balanceStubError: Error! = nil
     override func balance() -> Promise<Balance> {
         if let balanceStubError = balanceStubError {
             return .init(error: balanceStubError)
         }
-        return .value(balanceStub)
+        return Promise.value(balanceStub)
     }
 }
 

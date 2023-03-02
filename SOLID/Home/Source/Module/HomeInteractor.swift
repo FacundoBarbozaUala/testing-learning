@@ -9,7 +9,11 @@ import UalaCore
 
 final class HomeInteractor {
     
-    private let profileRepo: ProfileRepository = .init()
+    let profileRepo: ProfileRepository
+    
+    init (profileRepo: ProfileRepository = .init()) {
+        self.profileRepo = profileRepo
+    }
 }
 
 extension HomeInteractor {
