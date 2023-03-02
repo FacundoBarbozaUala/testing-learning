@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DE0D8AA29AF88EC00802005 /* HomeInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0D8A929AF88EC00802005 /* HomeInteractorTest.swift */; };
 		4E19C327BE81C520FF83547E /* Pods_SOLID_SOLIDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD598D4A85FEA932CAAEDD2 /* Pods_SOLID_SOLIDUITests.framework */; };
 		98BCC06D292E79960080ED80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BCC06C292E79960080ED80 /* AppDelegate.swift */; };
 		98BCC06F292E79960080ED80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BCC06E292E79960080ED80 /* SceneDelegate.swift */; };
@@ -55,6 +56,7 @@
 		29D59392163E4483E1F4FF5B /* Pods-SOLIDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOLIDTests.release.xcconfig"; path = "Target Support Files/Pods-SOLIDTests/Pods-SOLIDTests.release.xcconfig"; sourceTree = "<group>"; };
 		2BD598D4A85FEA932CAAEDD2 /* Pods_SOLID_SOLIDUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOLID_SOLIDUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34BD53984C24CED03421AAC3 /* Pods-SOLID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOLID.release.xcconfig"; path = "Target Support Files/Pods-SOLID/Pods-SOLID.release.xcconfig"; sourceTree = "<group>"; };
+		3DE0D8A929AF88EC00802005 /* HomeInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTest.swift; sourceTree = "<group>"; };
 		581D1A8D727E4F7D43EEF5BF /* Pods-SOLID-SOLIDUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SOLID-SOLIDUITests.release.xcconfig"; path = "Target Support Files/Pods-SOLID-SOLIDUITests/Pods-SOLID-SOLIDUITests.release.xcconfig"; sourceTree = "<group>"; };
 		98BCC069292E79960080ED80 /* SOLID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOLID.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BCC06C292E79960080ED80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				EA22C6BC29A64BF800A58634 /* LoginStatusDefaultTest.swift */,
 				EA22C6BE29A64DAC00A58634 /* LoginEventsTest.swift */,
 				F2D4D73529ACEA90008688A1 /* LoginRouterTest.swift */,
+				3DE0D8A929AF88EC00802005 /* HomeInteractorTest.swift */,
 			);
 			path = SOLIDTests;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DE0D8AA29AF88EC00802005 /* HomeInteractorTest.swift in Sources */,
 				98BCC084292E79980080ED80 /* SOLIDTests.swift in Sources */,
 				EA22C6BF29A64DAC00A58634 /* LoginEventsTest.swift in Sources */,
 				F2D4D73629ACEA90008688A1 /* LoginRouterTest.swift in Sources */,
