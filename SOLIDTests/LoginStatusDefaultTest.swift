@@ -42,7 +42,7 @@ final class LoginStatusDefaultTest: XCTestCase {
     func test_set_login_status_default() throws {
         // Arrange precondiciones, declaracion de variables
         let sut = makeSut()
-
+        
         // Assert
         XCTAssertEqual(sut.getLoginStatus(), false)
     }

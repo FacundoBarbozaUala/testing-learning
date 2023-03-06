@@ -11,13 +11,13 @@ public protocol LoginStatus {
 }
 
 public final class LoginStatusDefault: LoginStatus {
-    static var isLogged: Bool = false
+    private var isLogged: Bool = false
 
     public func getLoginStatus() -> Bool {
-        Self.isLogged
+        self.isLogged
     }
 
     public func setLoginStatus(isLogged: Bool) {
-        Self.isLogged = isLogged
+        self.isLogged = isLogged
     }
 }

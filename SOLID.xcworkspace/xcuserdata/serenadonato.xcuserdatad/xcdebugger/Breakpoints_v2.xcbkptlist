@@ -24,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "50289A3F-AD2E-46E3-AF38-969BC29CE379"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SOLIDTests/LoginRouterTest.swift"
@@ -34,6 +34,68 @@
             endingLineNumber = "18"
             landmarkName = "makeSut()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "50289A3F-AD2E-46E3-AF38-969BC29CE379 - db7e88393e8cb554"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for SOLIDTests.LoginRouterTest.makeSut() async -&gt; (SOLID.LoginRouter, __C.UINavigationController)"
+                  moduleName = "SOLIDTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/serenadonato/Desktop/testing-learning/SOLIDTests/LoginRouterTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "50289A3F-AD2E-46E3-AF38-969BC29CE379 - 722ac87e6f0b54b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for SOLIDTests.LoginRouterTest.makeSut() async -&gt; (SOLID.LoginRouter, __C.UINavigationController)"
+                  moduleName = "SOLIDTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/serenadonato/Desktop/testing-learning/SOLIDTests/LoginRouterTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "17">
+               </Location>
+               <Location
+                  uuid = "50289A3F-AD2E-46E3-AF38-969BC29CE379 - ea9608b69f8a7350"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for SOLIDTests.LoginRouterTest.makeSut() async -&gt; (SOLID.LoginRouter, __C.UINavigationController)"
+                  moduleName = "SOLIDTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/serenadonato/Desktop/testing-learning/SOLIDTests/LoginRouterTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "50289A3F-AD2E-46E3-AF38-969BC29CE379 - ea9608b69f8a7296"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for SOLIDTests.LoginRouterTest.makeSut() async -&gt; (SOLID.LoginRouter, __C.UINavigationController)"
+                  moduleName = "SOLIDTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/serenadonato/Desktop/testing-learning/SOLIDTests/LoginRouterTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "105">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

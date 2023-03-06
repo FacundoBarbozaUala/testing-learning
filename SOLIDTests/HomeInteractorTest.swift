@@ -28,12 +28,12 @@ final class HomeInteractorTest: XCTestCase {
         spy.balanceStub = balanceSpected
         let expectation = XCTestExpectation(description: "Promise resolved")
         
-        sut.getBalance { [weak self] result in
+        sut.getBalance { result in
             switch result {
             case .success(let balance):
                 XCTAssertEqual(balance, balanceSpected)
                 expectation.fulfill()
-            case .failure(let error):
+            case .failure(_):
                 XCTFail()
                 expectation.fulfill()
             }
@@ -47,9 +47,9 @@ final class HomeInteractorTest: XCTestCase {
         spy.balanceStubError = UalaError.undefined
         let expectation = XCTestExpectation(description: "Promise resolved")
         
-        sut.getBalance { [weak self] result in
+        sut.getBalance { result in
             switch result {
-            case .success(let balance):
+            case .success(_):
                 XCTFail()
                 expectation.fulfill()
             case .failure(let error):
@@ -60,18 +60,66 @@ final class HomeInteractorTest: XCTestCase {
         
         wait(for: [expectation], timeout: 5)
     }
+    
+    func test_get_user_success() {
+        let (sut, spy) = makeSut()
+        var userSpected = User(email: "")
+        spy.detailsStub = userSpected
+        let expectation = XCTestExpectation(description: "Promise resolved")
+        
+        sut.getUser { result in
+            switch result {
+            case .success(let user):
+                XCTAssertEqual(user, userSpected)
+                expectation.fulfill()
+            case .failure(_):
+                XCTFail()
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_get_user_failure() {
+        let (sut,spy) = makeSut()
+        spy.detailsStubError = UalaError.undefined
+        let expectation = XCTestExpectation(description: "Promise resolved")
+        
+        sut.getUser { result in
+            switch result {
+            case .success(_):
+                XCTFail()
+                expectation.fulfill()
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription, spy.detailsStubError.localizedDescription)
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
 }
+
 extension Balance: Equatable {
     public static func == (lhs: UalaCore.Balance, rhs: UalaCore.Balance) -> Bool {
         return lhs.accountId == rhs.accountId && lhs.availableBalance == rhs.availableBalance && lhs.balanceData == rhs.balanceData
     }
 }
 
+extension User: Equatable {
+    public static func == (lhs: UalaCore.User, rhs: UalaCore.User) -> Bool {
+        return lhs.userId == rhs.userId && lhs.email == rhs.email
+    }
+}
+
+
 class MockProfileRepository: ProfileRepository {
-        
+    
     var detailsIsInvoked: Bool = false
-    let detailsStub: User! = nil
-    let detailsStubError: Error! = nil
+    var detailsStub: User! = nil
+    var detailsStubError: Error! = nil
     override func details() -> Promise<User> {
         if let detailsStubError = detailsStubError {
             return .init(error: detailsStubError)
