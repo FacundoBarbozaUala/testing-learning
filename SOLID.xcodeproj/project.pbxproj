@@ -32,6 +32,7 @@
 		EA22C6BD29A64BF800A58634 /* LoginStatusDefaultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22C6BC29A64BF800A58634 /* LoginStatusDefaultTest.swift */; };
 		EA22C6BF29A64DAC00A58634 /* LoginEventsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22C6BE29A64DAC00A58634 /* LoginEventsTest.swift */; };
 		F2D4D73629ACEA90008688A1 /* LoginRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D4D73529ACEA90008688A1 /* LoginRouterTest.swift */; };
+		F2FF3BD029B7CAB300099D41 /* HomeRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF3BCF29B7CAB300099D41 /* HomeRouterTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		EA22C6BC29A64BF800A58634 /* LoginStatusDefaultTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatusDefaultTest.swift; sourceTree = "<group>"; };
 		EA22C6BE29A64DAC00A58634 /* LoginEventsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEventsTest.swift; sourceTree = "<group>"; };
 		F2D4D73529ACEA90008688A1 /* LoginRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterTest.swift; sourceTree = "<group>"; };
+		F2FF3BCF29B7CAB300099D41 /* HomeRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouterTest.swift; sourceTree = "<group>"; };
 		F38B806245F5448EEB45B1A7 /* Pods_SOLIDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOLIDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9DA9712D727A71581C474EC /* Pods_SOLID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SOLID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -187,6 +189,7 @@
 				EA22C6BE29A64DAC00A58634 /* LoginEventsTest.swift */,
 				F2D4D73529ACEA90008688A1 /* LoginRouterTest.swift */,
 				3DE0D8A929AF88EC00802005 /* HomeInteractorTest.swift */,
+				F2FF3BCF29B7CAB300099D41 /* HomeRouterTest.swift */,
 			);
 			path = SOLIDTests;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				3DE0D8AA29AF88EC00802005 /* HomeInteractorTest.swift in Sources */,
 				98BCC084292E79980080ED80 /* SOLIDTests.swift in Sources */,
 				EA22C6BF29A64DAC00A58634 /* LoginEventsTest.swift in Sources */,
+				F2FF3BD029B7CAB300099D41 /* HomeRouterTest.swift in Sources */,
 				F2D4D73629ACEA90008688A1 /* LoginRouterTest.swift in Sources */,
 				EA22C6BD29A64BF800A58634 /* LoginStatusDefaultTest.swift in Sources */,
 			);
