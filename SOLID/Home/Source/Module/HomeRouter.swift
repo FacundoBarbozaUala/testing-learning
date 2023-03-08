@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeRouter {
+class HomeRouter {
     var view: UIViewController?
     
     init(view: UIViewController? = nil) {

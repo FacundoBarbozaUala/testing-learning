@@ -7,10 +7,16 @@
 
 final class HomePresenter {
     
-    private let interactor: HomeInteractor = HomeInteractor()
-    private let router: HomeRouter = HomeRouter()
+    let interactor: HomeInteractor
+    let router: HomeRouter
     weak var view: HomeViewController?
     var task: Task<Void, Error>?
+    
+    init(interactor: HomeInteractor = HomeInteractor(), router: HomeRouter = HomeRouter() , view: HomeViewController? = nil) {
+        self.interactor = interactor
+        self.router = router
+        self.view = view
+    }
     
     deinit {
         task?.cancel()
@@ -33,7 +39,7 @@ extension HomePresenter {
             case .success(let balance):
                 self?.view?.setBalance(amount: balance.availableBalance)
             case .failure(let error):
-                print("💥: \(error)")
+                self?.view?.showError(error: error)
             }
         }
     }
@@ -47,7 +53,7 @@ extension HomePresenter {
                 let name = user.fullName ?? ""
                 print("👤: \n userID: \(userID) \n name: \(name) \n email: \(user.email)")
             case .failure(let error):
-                print("💥: \(error)")
+                self.view?.showError(error: error)
             }
         }
     }

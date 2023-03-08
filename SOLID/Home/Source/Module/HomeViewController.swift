@@ -8,7 +8,7 @@
 import UalaUI
 import UIKit
 
-final class HomeViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     private let backgroundView: UIImageView = {
         let imageView = UIImageView()
@@ -72,11 +72,12 @@ final class HomeViewController: UIViewController {
             balanceLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
-}
-
-extension HomeViewController {
     
     func setBalance(amount: Double) {
         balanceLabel.text = String.strCurrency(from: amount)
+    }
+    
+    func showError(error: Error) {
+        print("💥: \(error)")
     }
 }

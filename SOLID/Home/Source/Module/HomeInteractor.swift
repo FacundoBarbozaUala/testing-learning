@@ -7,16 +7,13 @@
 
 import UalaCore
 
-final class HomeInteractor {
+class HomeInteractor {
     
     let profileRepo: ProfileRepository
     
     init (profileRepo: ProfileRepository = .init()) {
         self.profileRepo = profileRepo
     }
-}
-
-extension HomeInteractor {
     
     func getBalance(completion: @escaping (Result<Balance, Error>) -> Void) {
         profileRepo.balance().done { balance in
