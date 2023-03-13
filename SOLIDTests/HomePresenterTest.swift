@@ -12,16 +12,16 @@ import XCTest
 final class HomePresenterTest: XCTestCase {
     
     @MainActor
-    func makeSut() -> (sut:HomePresenter, (mockInteractor: MockHomeInteractor, mockView: MockHomeViewController)) {
+    func makeSut() -> (sut:HomePresenter, (mockInteractor: MockHomeInteractor, mockView: MockHomeViewController, mockHomeRouter: MockHomeRouter)) {
         let mockHomeInteractor = MockHomeInteractor()
         let mockHomeRouter = MockHomeRouter()
         let mockHomeVC = MockHomeViewController()
         let sut = HomePresenter(interactor: mockHomeInteractor, router: mockHomeRouter, view: mockHomeVC)
-        return (sut,(mockHomeInteractor,mockHomeVC))
+        return (sut,(mockHomeInteractor,mockHomeVC,mockHomeRouter))
     }
     
     func test_get_balance_success() async throws {
-        let (sut,(mockHomeInteractor,mockHomeVC)) = await makeSut()
+        let (sut,(mockHomeInteractor,mockHomeVC, _)) = await makeSut()
         var balanceSpected = Balance(accountId: "", availableBalance: 1)
         mockHomeInteractor.getBalanceStub = balanceSpected
         
@@ -33,7 +33,7 @@ final class HomePresenterTest: XCTestCase {
     }
     
     func test_get_balance_failure() async throws {
-        let (sut,(mockHomeInteractor,mockHomeVC)) = await makeSut()
+        let (sut,(mockHomeInteractor,mockHomeVC, _)) = await makeSut()
         var errorSpected = UalaError.undefined
         mockHomeInteractor.getBalanceStubError = errorSpected
         
@@ -45,7 +45,7 @@ final class HomePresenterTest: XCTestCase {
     }
     
     func test_get_user_success() async throws {
-        let (sut,(mockHomeInteractor,mockHomeVC)) = await makeSut()
+        let (sut,(mockHomeInteractor,mockHomeVC, _)) = await makeSut()
         var userSpected = User(email: "")
         mockHomeInteractor.getUserStub = userSpected
         
@@ -57,7 +57,7 @@ final class HomePresenterTest: XCTestCase {
     }
     
     func test_get_user_failure() async throws {
-        let (sut,(mockHomeInteractor,mockHomeVC)) = await makeSut()
+        let (sut,(mockHomeInteractor,mockHomeVC, _)) = await makeSut()
         var errorSpected = UalaError.undefined
         mockHomeInteractor.getUserStubError = errorSpected
         
@@ -67,6 +67,17 @@ final class HomePresenterTest: XCTestCase {
             XCTAssertTrue(mockHomeVC.showErrorIsInvoked)
         }
     }
+    
+    func test_unLogged() async throws {
+        let (sut, (_, _, mockHomeRouter)) = await makeSut()
+        
+        sut.unLogged()
+        
+       _ = await sut.task?.result
+        
+        XCTAssertTrue(mockHomeRouter.goToLoginIsInvoked)
+    }
+    
 }
 class MockHomeInteractor: HomeInteractor {
     
@@ -90,9 +101,15 @@ class MockHomeInteractor: HomeInteractor {
         }
     }
 }
+
 class MockHomeRouter: HomeRouter {
+    var goToLoginIsInvoked: Bool = false
     
+    override func goToLogin() {
+        goToLoginIsInvoked = true
+    }
 }
+
 class MockHomeViewController: HomeViewController{
     var setBalanceIsInvoked: Bool = false
     override func setBalance(amount: Double) {

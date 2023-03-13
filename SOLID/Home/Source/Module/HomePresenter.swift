@@ -57,8 +57,6 @@ extension HomePresenter {
     }
     
     func unLogged() {
-        
-    
         task = Task {
             await router.goToLogin()
         }
