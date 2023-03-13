@@ -43,9 +43,33 @@ final class HomePresenterTest: XCTestCase {
             XCTAssertTrue(mockHomeVC.showErrorIsInvoked)
         }
     }
+    
+    func test_get_user_success() async throws {
+        let (sut,(mockHomeInteractor,mockHomeVC)) = await makeSut()
+        var userSpected = User(email: "")
+        mockHomeInteractor.getUserStub = userSpected
+        
+        await sut.getUser()
+        
+        await MainActor.run {
+            XCTAssertTrue(mockHomeVC.setUserIsInvoked)
+        }
+    }
+    
+    func test_get_user_failure() async throws {
+        let (sut,(mockHomeInteractor,mockHomeVC)) = await makeSut()
+        var errorSpected = UalaError.undefined
+        mockHomeInteractor.getUserStubError = errorSpected
+        
+        await sut.getUser()
+        
+        await MainActor.run {
+            XCTAssertTrue(mockHomeVC.showErrorIsInvoked)
+        }
+    }
 }
 class MockHomeInteractor: HomeInteractor {
-    var getBalanceIsInvoked: Bool = false
+    
     var getBalanceStub: Balance! = nil
     var getBalanceStubError: Error! = nil
     override func getBalance(completion: @escaping (Result<Balance, Error>) -> Void) {
@@ -53,6 +77,16 @@ class MockHomeInteractor: HomeInteractor {
             completion(.failure(getBalanceStubError))
         } else {
             completion(.success(getBalanceStub))
+        }
+    }
+    
+    var getUserStub: User! = nil
+    var getUserStubError: Error! = nil
+    override func getUser(completion: @escaping (Result<User, Error>) -> Void) {
+        if let getUserStubError = getUserStubError {
+            completion(.failure(getUserStubError))
+        } else {
+            completion(.success(getUserStub))
         }
     }
 }
@@ -66,8 +100,12 @@ class MockHomeViewController: HomeViewController{
     }
     
     var showErrorIsInvoked: Bool = false
-    //var errorStub
     override func showError(error: Error) {
         showErrorIsInvoked = true
+    }
+    
+    var setUserIsInvoked: Bool = false
+    override func setUser(userID: String, name: String,email: String) {
+        setUserIsInvoked = true
     }
 }

@@ -49,9 +49,7 @@ extension HomePresenter {
         interactor.getUser { result in
             switch result {
             case .success(let user):
-                let userID = user.userId ?? ""
-                let name = user.fullName ?? ""
-                print("👤: \n userID: \(userID) \n name: \(name) \n email: \(user.email)")
+                self.view?.setUser(user: user)
             case .failure(let error):
                 self.view?.showError(error: error)
             }

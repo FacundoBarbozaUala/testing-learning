@@ -13,9 +13,7 @@ class HomeRouter {
     init(view: UIViewController? = nil) {
         self.view = view
     }
-}
 
-extension HomeRouter {
     @MainActor
     func goToLogin() {
         view?.navigationController?.popToRootViewController(animated: true)

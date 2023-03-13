@@ -7,6 +7,7 @@
 
 import UalaUI
 import UIKit
+import UalaCore
 
 class HomeViewController: UIViewController {
     
@@ -52,7 +53,7 @@ class HomeViewController: UIViewController {
     @objc func logOut() {
         navigationController?.popToRootViewController(animated: true)
     }
-
+    
     private func setup() {
         view.backgroundColor = .white
         view.addSubview(backgroundView)
@@ -79,5 +80,9 @@ class HomeViewController: UIViewController {
     
     func showError(error: Error) {
         print("💥: \(error)")
+    }
+    
+    func setUser(user: User) {
+        print("👤: \n userID: \(user.userId) \n name: \(user.fullName) \n email: \(user.email)")
     }
 }
