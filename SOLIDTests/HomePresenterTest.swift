@@ -78,12 +78,29 @@ final class HomePresenterTest: XCTestCase {
         XCTAssertTrue(mockHomeRouter.goToLoginIsInvoked)
     }
     
+    func test_homeStarted() async throws {
+        let (sut,(mockHomeInteractor,mockHomeVC,mockHomeRouter)) = await makeSut()
+        var balanceSpected = Balance(accountId: "", availableBalance: 1)
+        mockHomeInteractor.getBalanceStub = balanceSpected
+        var userSpected = User(email: "")
+        mockHomeInteractor.getUserStub = userSpected
+        
+        sut.homeStarted()
+        
+        _ = await sut.task?.result
+        
+        XCTAssertTrue(mockHomeInteractor.getBalanceIsInvoked)
+        XCTAssertTrue(mockHomeInteractor.getUserIsInvoked)
+    }
+    
 }
 class MockHomeInteractor: HomeInteractor {
     
     var getBalanceStub: Balance! = nil
     var getBalanceStubError: Error! = nil
+    var getBalanceIsInvoked: Bool = false
     override func getBalance(completion: @escaping (Result<Balance, Error>) -> Void) {
+        getBalanceIsInvoked = true
         if let getBalanceStubError = getBalanceStubError {
             completion(.failure(getBalanceStubError))
         } else {
@@ -93,7 +110,9 @@ class MockHomeInteractor: HomeInteractor {
     
     var getUserStub: User! = nil
     var getUserStubError: Error! = nil
+    var getUserIsInvoked: Bool = false
     override func getUser(completion: @escaping (Result<User, Error>) -> Void) {
+        getUserIsInvoked = true
         if let getUserStubError = getUserStubError {
             completion(.failure(getUserStubError))
         } else {
@@ -122,7 +141,7 @@ class MockHomeViewController: HomeViewController{
     }
     
     var setUserIsInvoked: Bool = false
-    override func setUser(userID: String, name: String,email: String) {
+    override func setUser(user: User) {
         setUserIsInvoked = true
     }
 }
