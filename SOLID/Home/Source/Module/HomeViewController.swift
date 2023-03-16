@@ -11,6 +11,18 @@ import UalaCore
 
 class HomeViewController: UIViewController {
     
+    private var presenter: HomePresenter
+    
+    init(presenter: HomePresenter = .init()) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+        presenter.view = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let backgroundView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,17 +38,6 @@ class HomeViewController: UIViewController {
         label.font = UalaStyle.font.h1ExtraLight
         return label
     }()
-    
-    private let presenter: HomePresenter = HomePresenter()
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        presenter.view = self
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

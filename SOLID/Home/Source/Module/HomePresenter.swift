@@ -5,7 +5,7 @@
 //  Created by Francisco Javier Saldivar Rubio on 29/10/22.
 //
 
-final class HomePresenter {
+class HomePresenter {
     
     let interactor: HomeInteractor
     let router: HomeRouter
@@ -21,9 +21,6 @@ final class HomePresenter {
     deinit {
         task?.cancel()
     }
-}
-
-extension HomePresenter {
     
     func homeStarted() {
         task = Task {
@@ -61,5 +58,4 @@ extension HomePresenter {
             await router.goToLogin()
         }
     }
-    
 }
